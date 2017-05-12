@@ -1,0 +1,7 @@
+{
+  "name": "air-tracker",
+  "version": "0.1.10",
+  "scripts": {
+    "postinstall": "bower install"
+  }
+}
