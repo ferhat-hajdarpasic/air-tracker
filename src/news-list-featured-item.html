@@ -15,7 +15,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="news-list-featured-item">
 
-  <template>
+    <template>
 
     <style>
 
@@ -185,31 +185,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <div class="scrim"></div>
       </div>
       <div class="headline">
-        <div class="category" hidden$="[[!item.category]]">[[item.category]]</div>
         <h2>[[item.headline]]</h2>
         <div class="details">
-          <div class="time-ago">[[item.timeAgo]]</div>
-          <div class="author">[[item.author]]</div>
+          
         </div>
         <p>[[item.summary]]</p>
       </div>
     </a>
   </template>
 
-  <script>
+    <script>
+        Polymer({
 
-    Polymer({
+            is: 'news-list-featured-item',
 
-      is: 'news-list-featured-item',
+            properties: {
 
-      properties: {
+                item: Object
 
-        item: Object
+            }
 
-      }
-
-    });
-
-  </script>
+        });
+    </script>
 
 </dom-module>

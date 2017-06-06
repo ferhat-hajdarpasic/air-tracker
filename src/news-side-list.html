@@ -12,7 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="news-side-list">
 
-  <template>
+    <template>
 
     <style>
 
@@ -74,27 +74,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </h3>
     <template is="dom-repeat" items="[[items]]">
       <a href$="[[item.href]]">
-        <div class="category">[[item.category]]</div>
+        <div class="category"></div>
         <span class="headline">[[item.headline]]</span>
-        <span class="time-ago">[[item.timeAgo]]</span>
+        
       </a>
     </template>
-  </template>
+    </template>
 
-  <script>
+    <script>
+        Polymer({
 
-    Polymer({
+            is: 'news-side-list',
 
-      is: 'news-side-list',
+            properties: {
 
-      properties: {
+                items: Array
 
-        items: Array
+            }
 
-      }
-
-    });
-
-  </script>
+        });
+    </script>
 
 </dom-module>

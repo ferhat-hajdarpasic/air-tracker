@@ -19,7 +19,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="news-list">
 
-  <template>
+    <template>
 
     <style include="app-grid-style">
 
@@ -158,97 +158,92 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               <news-list-item item="[[item]]"></news-list-item>
             </li>
           </template>
-        </ul>
+    </ul>
 
-        <h3>Opinions</h3>
-        <ul class="opinions-grid fade-in">
-          <template is="dom-repeat" items="[[_slice(category.items, 5)]]">
+    <h3>Opinions</h3>
+    <ul class="opinions-grid fade-in">
+        <template is="dom-repeat" items="[[_slice(category.items, 5)]]">
             <li>
               <news-list-item horizontal item="[[item]]"></news-list-item>
             </li>
           </template>
-        </ul>
-      </div>
-
-      <aside>
-        <div class="ad-container">
-          <news-iframe src="//rcm-na.amazon-adsystem.com/e/cm?o=1&p=12&l=ur1&f=ifr"></news-iframe>
-        </div>
-        <news-side-list class="fade-in" items="[[_slice(category.items, 0, 3)]]">
-          Most Read
-        </news-side-list>
-        <news-side-list class="fade-in" featured items="[[_slice(category.items, 3, 9)]]">
-          More Top Stories
-        </news-side-list>
-      </aside>
+    </ul>
     </div>
 
-    <news-network-warning
-        hidden$="[[!failure]]"
-        offline="[[offline]]"
-        on-try-reconnect="_tryReconnect"></news-network-warning>
+    <aside>
+        <div class="ad-container">
+            <news-iframe src="//rcm-na.amazon-adsystem.com/e/cm?o=1&p=12&l=ur1&f=ifr"></news-iframe>
+        </div>
+        <news-side-list class="fade-in" items="[[_slice(category.items, 0, 3)]]">
+            Quick Links
+        </news-side-list>
+        <news-side-list cslass="fade-in" featured items="[[_slice(category.items, 3, 9)]]">
+            Latest News
+        </news-side-list>
+    </aside>
+    </div>
 
-  </template>
+    <news-network-warning hidden$="[[!failure]]" offline="[[offline]]" on-try-reconnect="_tryReconnect"></news-network-warning>
 
-  <script>
+    </template>
 
-    Polymer({
+    <script>
+        Polymer({
 
-      is: 'news-list',
+            is: 'news-list',
 
-      properties: {
+            properties: {
 
-        route: Object,
+                route: Object,
 
-        category: Object,
+                category: Object,
 
-        offline: Boolean,
+                offline: Boolean,
 
-        failure: Boolean,
+                failure: Boolean,
 
-        categoryName: {
-          type: Boolean,
-          computed: '_return(_routeData.category)',
-          notify: true
-        },
+                categoryName: {
+                    type: Boolean,
+                    computed: '_return(_routeData.category)',
+                    notify: true
+                },
 
-        _routeData: Object
+                _routeData: Object
 
-      },
+            },
 
-      _boundResizeHandler: null,
+            _boundResizeHandler: null,
 
-      attached: function() {
-        this._boundResizeHandler = this._resizeHandler.bind(this);
-        window.addEventListener('resize', this._boundResizeHandler);
-      },
+            attached: function() {
+                this._boundResizeHandler = this._resizeHandler.bind(this);
+                window.addEventListener('resize', this._boundResizeHandler);
+            },
 
-      detached: function() {
-        window.removeEventListener('resize', this._boundResizeHandler);
-      },
+            detached: function() {
+                window.removeEventListener('resize', this._boundResizeHandler);
+            },
 
-      _getFeaturedItem: function(items) {
-        return items ? items[0] : {};
-      },
+            _getFeaturedItem: function(items) {
+                return items ? items[0] : {};
+            },
 
-      _tryReconnect: function() {
-        this.fire('refresh-data');
-      },
+            _tryReconnect: function() {
+                this.fire('refresh-data');
+            },
 
-      _resizeHandler: function() {
-        this.debounce('_resize', this.updateStyles, 50);
-      },
+            _resizeHandler: function() {
+                this.debounce('_resize', this.updateStyles, 50);
+            },
 
-      _slice: function(list, begin, end) {
-        return list.slice(begin, end);
-      },
+            _slice: function(list, begin, end) {
+                return list.slice(begin, end);
+            },
 
-      _return: function(value) {
-        return value;
-      }
+            _return: function(value) {
+                return value;
+            }
 
-    });
-
-  </script>
+        });
+    </script>
 
 </dom-module>
